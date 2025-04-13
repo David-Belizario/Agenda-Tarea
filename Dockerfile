@@ -37,7 +37,9 @@ WORKDIR /var/www/html
 RUN composer install --no-dev --optimize-autoloader
 
 RUN php artisan migrate --force
-
+# Instalar dependencias de Node y compilar con Vite
+RUN npm install
+RUN npm run build
 # Exponer puerto 80
 EXPOSE 80
 
