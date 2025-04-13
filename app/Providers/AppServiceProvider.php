@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,10 +16,12 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap any application services. comentario
      */
-    public function boot(): void
+    public function boot()
     {
-        //
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 }
